@@ -202,20 +202,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  flutter_stylesheet_annotation:
-    dependency: transitive
-    description:
-      name: flutter_stylesheet_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
-  flutter_stylesheet_gen:
-    dependency: "direct dev"
-    description:
-      path: "../flutter_stylesheet_gen"
-      relative: true
-    source: path
-    version: "0.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -387,13 +373,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  source_gen:
-    dependency: transitive
-    description:
-      name: source_gen
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.1"
   source_span:
     dependency: transitive
     description:
