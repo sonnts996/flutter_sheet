@@ -12,10 +12,10 @@ mixin StyleClassFinder {
 
   T findIterable<T>(Iterable<String> classPointer);
 
-  dynamic absoluteFind(dynamic map, String className,[ int index = 0]) {
-    if(map is Map<String, dynamic>) {
+  dynamic absoluteFind(dynamic map, String className, [int index = 0]) {
+    if (map is Map<String, dynamic>) {
       return map[className];
-    }else{
+    } else {
       throw NotStyleClassException(className);
     }
   }

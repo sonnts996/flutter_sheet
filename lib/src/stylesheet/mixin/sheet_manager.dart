@@ -11,4 +11,3 @@ mixin SheetManager<T extends FlutterStyleSheet> {
 
   T get(String? stylesheet);
 }
-

@@ -59,8 +59,7 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-            getStyle<DefaultStyle>().find('appbar.leading').call(false),
+        leading: getStyle<DefaultStyle>().find('appbar.leading').call(false),
         title: Text(
           widget.title,
           style: getStyle<DefaultStyle>().find<TextStyle>('appbar.titleStyle'),

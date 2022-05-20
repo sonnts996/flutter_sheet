@@ -16,7 +16,6 @@ Icon _defaultBackIcon(bool isDialog) => isDialog
         color: Colors.white,
       );
 
-@StyleSheet()
 class DefaultStyle extends FlutterStyleSheet {
   DefaultStyle(
       {this.primaryColor = Colors.indigo,

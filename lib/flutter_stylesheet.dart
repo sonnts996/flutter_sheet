@@ -1,7 +1,5 @@
 library flutter_stylesheet;
 
-export 'src/annotation/styleclass_annotation.dart';
-export 'src/annotation/stylesheet_annotation.dart';
 export 'src/exception/style_not_found.dart';
 export 'src/exception/style_not_set.dart';
 export 'src/stylesheet/mixin/provider_single_child_widget.dart';
