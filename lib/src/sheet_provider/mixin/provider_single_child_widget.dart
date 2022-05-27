@@ -11,7 +11,9 @@ import '../sheet_provider.dart';
 mixin SheetProviderSingleChildWidget on SingleChildWidget {}
 
 mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
-  T sheet<T>({String? sheet, bool listen = false}) {
+  T currentSheet<T>() => getSheet<T>();
+
+  T getSheet<T>({String? sheet, bool listen = false}) {
     return SheetProvider.of<T>(
       context,
       listen: listen,
@@ -31,9 +33,10 @@ mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
   }
 }
 
-
 mixin SheetUse<S extends StatefulWidget, T> on State<S> {
-  T sheet({String? sheet, bool listen = false}) {
+  T currentSheet() => getSheet();
+
+  T getSheet({String? sheet, bool listen = false}) {
     return SheetProvider.of<T>(
       context,
       listen: listen,

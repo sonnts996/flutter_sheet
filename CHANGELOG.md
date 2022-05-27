@@ -21,3 +21,7 @@
 ## 0.0.1+5
 
 * rename method
+
+## 0.0.1+6
+
+* refactor method

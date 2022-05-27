@@ -1,6 +1,6 @@
 name: flutter_sheet
 description: Easily change the definition (such as theme, configuration,...) for the application
-version: 0.0.1+5
+version: 0.0.1+6
 repository: https://github.com/sonnts996/flutter_sheet
 
 environment:
@@ -19,8 +19,8 @@ dev_dependencies:
 
 flutter:
 
-  # To add assets to your package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-  #
+# To add assets to your package, add an assets section, like this:
+# assets:
+#   - images/a_dot_burr.jpeg
+#   - images/a_dot_ham.jpeg
+#

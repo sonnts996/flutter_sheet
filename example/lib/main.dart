@@ -41,7 +41,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SheetUse<MyHomePage, DefaultStyle> {
   final sheet = <String>['default', 'red', 'blue'];
   int index = 0;
 
@@ -58,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: sheet<DefaultStyle>().backIcon(false),
+        leading: getSheet().backIcon(false),
         title: Text(
           widget.title,
-          style: sheet<DefaultStyle>().titleStyle,
+          style: getSheet().titleStyle,
         ),
       ),
       body: Center(
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
-              style: sheet<DefaultStyle>().captionStyle,
+              style: getSheet().captionStyle,
             ),
             SheetConsumer<DefaultStyle>(
                 builder: (context, sheet, child) => Row(
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
             AppButton(
                 text: 'Change Style',
                 onPressed: () {
-                  applySheet<DefaultStyle>(sheet[nextIndex]);
+                  applySheet(sheet[nextIndex]);
                 }),
           ],
         ),
