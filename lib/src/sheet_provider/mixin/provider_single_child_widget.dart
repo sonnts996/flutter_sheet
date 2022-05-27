@@ -11,7 +11,7 @@ import '../sheet_provider.dart';
 mixin SheetProviderSingleChildWidget on SingleChildWidget {}
 
 mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
-  T getStyle<T>({String? sheet, bool listen = false}) {
+  T sheet<T>({String? sheet, bool listen = false}) {
     return SheetProvider.of<T>(
       context,
       listen: listen,
@@ -19,11 +19,11 @@ mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
     );
   }
 
-  void applyStyle<T>(String sheet) {
+  void applySheet<T>(String sheet) {
     SheetProvider.apply<T>(context, sheet);
   }
 
-  SheetManagerMixin<T> getStyleManager<T>({bool listen = false}) {
+  SheetManagerMixin<T> getSheetManager<T>({bool listen = false}) {
     return SheetProvider.manager<T>(
       context,
       listen: listen,
@@ -33,7 +33,7 @@ mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
 
 
 mixin SheetUse<S extends StatefulWidget, T> on State<S> {
-  T getStyle({String? sheet, bool listen = false}) {
+  T sheet({String? sheet, bool listen = false}) {
     return SheetProvider.of<T>(
       context,
       listen: listen,
@@ -41,11 +41,11 @@ mixin SheetUse<S extends StatefulWidget, T> on State<S> {
     );
   }
 
-  void applyStyle(String sheet) {
+  void applySheet(String sheet) {
     SheetProvider.apply<T>(context, sheet);
   }
 
-  SheetManagerMixin<T> getStyleManager({bool listen = false}) {
+  SheetManagerMixin<T> getSheetManager({bool listen = false}) {
     return SheetProvider.manager<T>(
       context,
       listen: listen,

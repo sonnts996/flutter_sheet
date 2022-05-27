@@ -58,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: getStyle<DefaultStyle>().backIcon(false),
+        leading: sheet<DefaultStyle>().backIcon(false),
         title: Text(
           widget.title,
-          style: getStyle<DefaultStyle>().titleStyle,
+          style: sheet<DefaultStyle>().titleStyle,
         ),
       ),
       body: Center(
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
-              style: getStyle<DefaultStyle>().captionStyle,
+              style: sheet<DefaultStyle>().captionStyle,
             ),
             SheetConsumer<DefaultStyle>(
                 builder: (context, sheet, child) => Row(
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
             AppButton(
                 text: 'Change Style',
                 onPressed: () {
-                  applyStyle<DefaultStyle>(sheet[nextIndex]);
+                  applySheet<DefaultStyle>(sheet[nextIndex]);
                 }),
           ],
         ),

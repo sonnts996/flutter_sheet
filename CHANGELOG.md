@@ -17,3 +17,7 @@
 ## 0.0.1+4
 
 * add MultiSheetUse
+
+## 0.0.1+5
+
+* rename method
