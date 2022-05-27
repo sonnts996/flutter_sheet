@@ -13,3 +13,7 @@
 ## 0.0.1+3
 
 * update lost export
+
+## 0.0.1+4
+
+* add MultiSheetUse
