@@ -2,7 +2,7 @@ import 'package:example/button.dart';
 import 'package:example/stylesheet/theme.stylesheet.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stylesheet/flutter_stylesheet.dart';
+import 'package:flutter_sheet/flutter_sheet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +14,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return StyleSheetProvider<DefaultStyle>(
+    return SheetProvider<DefaultStyle>(
       createSheets: {
-        'default': () => DefaultStyle(),
-        'red': () => DefaultStyle(primaryColor: Colors.red),
-        'blue': () => DefaultStyle(primaryColor: Colors.blue),
+        'default': () => const DefaultStyle(),
+        'red': () => const DefaultStyle(primaryColor: Colors.red),
+        'blue': () => const DefaultStyle(primaryColor: Colors.blue),
       },
       hotReload: kDebugMode,
-      child: StyleSheetConsumer<DefaultStyle>(
-          // stylesheet: 'default',
+      child: SheetConsumer<DefaultStyle>(
+          // sheet_provider: 'default',
           builder: (context, sheet, child) => MaterialApp(
                 title: 'Flutter Demo',
                 theme: sheet.theme,
@@ -41,14 +41,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with StyleSheetUsing<MyHomePage> {
-  final stylesheet = <String>['default', 'red', 'blue'];
+class _MyHomePageState extends State<MyHomePage> with SheetUsing<MyHomePage> {
+  final sheet = <String>['default', 'red', 'blue'];
   int index = 0;
 
   int get nextIndex {
     index++;
-    if (index < stylesheet.length) {
+    if (index < sheet.length) {
       return index;
     }
     index = 0;
@@ -59,23 +58,62 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: getStyle<DefaultStyle>().find('appbar.leading').call(false),
+        leading: getStyle<DefaultStyle>().backIcon(false),
         title: Text(
           widget.title,
-          style: getStyle<DefaultStyle>().find<TextStyle>('appbar.titleStyle'),
+          style: getStyle<DefaultStyle>().titleStyle,
         ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'You have pushed the button this many times:',
+              style: getStyle<DefaultStyle>().captionStyle,
             ),
+            SheetConsumer<DefaultStyle>(
+                builder: (context, sheet, child) => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          child: Visibility(
+                            visible: sheet.primary == Colors.indigo,
+                            child: Icon(
+                              sheet.checkIcon,
+                              color: sheet.checkIconColor,
+                            ),
+                          ),
+                          backgroundColor: Colors.indigo,
+                        ),
+                        SizedBox(width: sheet.checkIconSpace),
+                        CircleAvatar(
+                          child: Visibility(
+                              visible: sheet.primary == Colors.red,
+                              child: Icon(
+                                sheet.checkIcon,
+                                color: sheet.checkIconColor,
+                              )),
+                          backgroundColor: Colors.red,
+                        ),
+                        SizedBox(width: sheet.checkIconSpace),
+                        CircleAvatar(
+                          child: Visibility(
+                            visible: sheet.primary == Colors.blue,
+                            child: Icon(
+                              sheet.checkIcon,
+                              color: sheet.checkIconColor,
+                            ),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
+                      ],
+                    )),
             AppButton(
                 text: 'Change Style',
                 onPressed: () {
-                  applyStyle<DefaultStyle>(stylesheet[nextIndex]);
+                  applyStyle<DefaultStyle>(sheet[nextIndex]);
                 }),
           ],
         ),

@@ -4,82 +4,50 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_stylesheet/flutter_stylesheet.dart';
+import 'package:flutter_sheet/flutter_sheet.dart';
 
-Icon _defaultBackIcon(bool isDialog) => isDialog
-    ? const Icon(
-        Icons.close,
-        color: Colors.black45,
-      )
-    : const Icon(
-        Icons.home,
-        color: Colors.white,
-      );
+class DefaultStyle extends XStyle {
+  const DefaultStyle({
+    MaterialColor primaryColor = Colors.indigo,
+    this.titleStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
+    this.textButtonStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+    ),
+    this.captionStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 13,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.italic,
+    ),
+    this.checkIconColor = Colors.white,
+    this.checkIcon = Icons.check,
+    this.checkIconSpace = 4,
+  }) : super(swatch: primaryColor);
 
-class DefaultStyle extends FlutterStyleSheet {
-  DefaultStyle(
-      {this.primaryColor = Colors.indigo,
-      this.titleStyle = const TextStyle(
-        color: Colors.white,
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-      Icon Function(bool isDialog)? backIcon})
-      : backIcon = backIcon ?? _defaultBackIcon;
-
-  final MaterialColor primaryColor;
   final TextStyle titleStyle;
-  Icon Function(bool isDialog) backIcon;
+  final TextStyle textButtonStyle;
+  final TextStyle captionStyle;
 
-  @override
-  // TODO: implement theme
-  ThemeData get theme => ThemeData(
-        primaryColor: primaryColor,
-        primarySwatch: primaryColor,
-      );
+  final Color checkIconColor;
+  final IconData checkIcon;
+  final double checkIconSpace;
 
-  @override
-  // TODO: implement styles
-  Map<String, dynamic> get styles => {
-        'appbar': {
-          'height': 32,
-          'color': primaryColor,
-          'titleStyle': titleStyle,
-          'leading': backIcon,
-        },
-        'scaffold': {
-          'background': Colors.white,
-        },
-        'home': {
-          'alert': {
-            'success': {
-              'background': Colors.greenAccent,
-              'icon': (c) => const Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 24,
-                  ),
-              'style': const TextStyle(color: Colors.white),
-            },
-            'error': {
-              'background': Colors.red.shade200,
-              'icon': (c) => const Icon(
-                    Icons.close,
-                    color: Colors.redAccent,
-                    size: 24,
-                  ),
-              'style': const TextStyle(color: Colors.red),
-            }
-          },
-          'button': {
-            'text': titleStyle,
-            'style': ElevatedButton.styleFrom(
-                primary: primaryColor,
-                onPrimary: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ))
-          }
-        }
-      };
+  ButtonStyle get buttonStyle =>
+      ElevatedButton.styleFrom(primary: primary, textStyle: textButtonStyle);
+
+  Icon backIcon(bool isDialog) => isDialog
+      ? const Icon(
+          Icons.close,
+          color: Colors.black45,
+        )
+      : const Icon(
+          Icons.home,
+          color: Colors.white,
+        );
 }

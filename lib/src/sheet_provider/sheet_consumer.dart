@@ -2,15 +2,14 @@
  Created by Thanh Son on 4/18/2022.
  Copyright (c) 2022 . All rights reserved.
 */
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_stylesheet/flutter_stylesheet.dart';
+import 'package:flutter/widgets.dart';
+import 'sheet_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-class StyleSheetConsumer<T extends FlutterStyleSheet>
-    extends SingleChildStatelessWidget {
-  const StyleSheetConsumer(
-      {Key? key, Widget? child, required this.builder, this.stylesheet})
+class SheetConsumer<T> extends SingleChildStatelessWidget {
+  const SheetConsumer(
+      {Key? key, Widget? child, required this.builder, this.sheet})
       : super(key: key, child: child);
 
   final Widget Function(
@@ -18,14 +17,14 @@ class StyleSheetConsumer<T extends FlutterStyleSheet>
     T sheet,
     Widget? child,
   ) builder;
-  final String? stylesheet;
+  final String? sheet;
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
-    return Consumer<StyleSheetManager<T>>(
+    return Consumer<SheetManager<T>>(
       builder: (context, value, child) => builder.call(
         context,
-        value.get(stylesheet),
+        value.get(sheet),
         child,
       ),
       child: child,
@@ -33,14 +32,13 @@ class StyleSheetConsumer<T extends FlutterStyleSheet>
   }
 }
 
-class StyleSheetConsumer2<T1 extends FlutterStyleSheet,
-    T2 extends FlutterStyleSheet> extends SingleChildStatelessWidget {
-  const StyleSheetConsumer2({
+class SheetConsumer2<T1, T2> extends SingleChildStatelessWidget {
+  const SheetConsumer2({
     Key? key,
     Widget? child,
     required this.builder,
-    this.stylesheet1,
-    this.stylesheet2,
+    this.sheet1,
+    this.sheet2,
   }) : super(key: key, child: child);
 
   final Widget Function(
@@ -49,16 +47,16 @@ class StyleSheetConsumer2<T1 extends FlutterStyleSheet,
     T2 sheet2,
     Widget? child,
   ) builder;
-  final String? stylesheet1;
-  final String? stylesheet2;
+  final String? sheet1;
+  final String? sheet2;
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
-    return Consumer2<StyleSheetManager<T1>, StyleSheetManager<T2>>(
+    return Consumer2<SheetManager<T1>, SheetManager<T2>>(
       builder: (context, value, value2, child) => builder.call(
         context,
-        value.get(stylesheet1),
-        value2.get(stylesheet2),
+        value.get(sheet1),
+        value2.get(sheet2),
         child,
       ),
       child: child,
@@ -66,17 +64,14 @@ class StyleSheetConsumer2<T1 extends FlutterStyleSheet,
   }
 }
 
-class StyleSheetConsumer3<
-    T1 extends FlutterStyleSheet,
-    T2 extends FlutterStyleSheet,
-    T3 extends FlutterStyleSheet> extends SingleChildStatelessWidget {
-  const StyleSheetConsumer3({
+class SheetConsumer3<T1, T2, T3> extends SingleChildStatelessWidget {
+  const SheetConsumer3({
     Key? key,
     Widget? child,
     required this.builder,
-    this.stylesheet1,
-    this.stylesheet2,
-    this.stylesheet3,
+    this.sheet1,
+    this.sheet2,
+    this.sheet3,
   }) : super(key: key, child: child);
 
   final Widget Function(
@@ -86,19 +81,18 @@ class StyleSheetConsumer3<
     T3 sheet3,
     Widget? child,
   ) builder;
-  final String? stylesheet1;
-  final String? stylesheet2;
-  final String? stylesheet3;
+  final String? sheet1;
+  final String? sheet2;
+  final String? sheet3;
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
-    return Consumer3<StyleSheetManager<T1>, StyleSheetManager<T2>,
-        StyleSheetManager<T3>>(
+    return Consumer3<SheetManager<T1>, SheetManager<T2>, SheetManager<T3>>(
       builder: (context, value, value2, value3, child) => builder.call(
         context,
-        value.get(stylesheet1),
-        value2.get(stylesheet2),
-        value3.get(stylesheet3),
+        value.get(sheet1),
+        value2.get(sheet2),
+        value3.get(sheet3),
         child,
       ),
       child: child,

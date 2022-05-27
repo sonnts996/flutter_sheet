@@ -4,7 +4,7 @@
 */
 import 'package:example/stylesheet/theme.stylesheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_stylesheet/flutter_stylesheet.dart';
+import 'package:flutter_sheet/flutter_sheet.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -17,13 +17,13 @@ class AppButton extends StatelessWidget {
   final Function() onPressed;
 
   @override
-  Widget build(BuildContext context) => StyleSheetConsumer<DefaultStyle>(
+  Widget build(BuildContext context) => SheetConsumer<DefaultStyle>(
         builder: (context, sheet, child) => ElevatedButton(
             onPressed: onPressed,
             child: Text(
               text,
-              style: sheet.findIterable(['home', 'button', 'text']),
+              style: sheet.textButtonStyle,
             ),
-            style: sheet.findIterable(['home', 'button', 'style'])),
+            style: sheet.buttonStyle),
       );
 }
