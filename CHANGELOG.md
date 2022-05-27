@@ -9,3 +9,7 @@
 ## 0.0.1+2
 
 * re-define package
+
+## 0.0.1+3
+
+* update lost export

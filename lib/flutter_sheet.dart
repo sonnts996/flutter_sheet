@@ -7,4 +7,5 @@ export 'src/sheet_provider/mixin/sheet_manager.dart';
 export 'src/sheet_provider/sheet_consumer.dart';
 export 'src/sheet_provider/sheet_manager.dart';
 export 'src/sheet_provider/sheet_provider.dart';
+export 'src/sheet_provider/multi_sheet_provider.dart';
 export 'src/stylesheet/style.dart';
