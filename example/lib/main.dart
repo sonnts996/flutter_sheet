@@ -1,5 +1,6 @@
 import 'package:example/button.dart';
 import 'package:example/stylesheet/theme.stylesheet.dart';
+import 'package:example/text/app_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sheet/flutter_sheet.dart';
@@ -14,11 +15,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return SheetProvider<DefaultStyle>(
+    return MultiSheetProvider(
       createSheets: {
-        'default': () => const DefaultStyle(),
-        'red': () => const DefaultStyle(primaryColor: Colors.red),
-        'blue': () => const DefaultStyle(primaryColor: Colors.blue),
+        'default': [
+          SheetCreator<AppText>(() => const AppText()),
+          SheetCreator<DefaultStyle>(() => const DefaultStyle()),
+        ],
+        'red': [
+          SheetCreator<DefaultStyle>(
+              () => const DefaultStyle(primaryColor: Colors.red))
+        ],
+        'blue': [
+          SheetCreator<DefaultStyle>(
+              () => const DefaultStyle(primaryColor: Colors.blue))
+        ],
+        'vi': [
+          SheetCreator<AppText>(() => const AppText(
+              button: 'Thay đổi chủ đề',
+              title: 'Thay đôi ngôn ngữ',
+              buttonLang: 'Sheet Demo App Vi'))
+        ],
+        // 'num': [SheetCreator<AppText>(() => AppTextNum())],
       },
       hotReload: kDebugMode,
       child: SheetConsumer<DefaultStyle>(
@@ -41,9 +58,12 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SheetUse<MyHomePage, DefaultStyle> {
+class _MyHomePageState extends State<MyHomePage>
+    with SheetUse<MyHomePage, AppText> {
   final sheet = <String>['default', 'red', 'blue'];
+  final sheetLang = <String>['default', 'vi'];
   int index = 0;
+  int indexLang = 0;
 
   int get nextIndex {
     index++;
@@ -54,14 +74,23 @@ class _MyHomePageState extends State<MyHomePage> with SheetUse<MyHomePage, Defau
     return 0;
   }
 
+  int get nextIndexLang {
+    indexLang++;
+    if (indexLang < sheetLang.length) {
+      return indexLang;
+    }
+    indexLang = 0;
+    return 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: getSheet().backIcon(false),
+        leading: SheetProvider.of<DefaultStyle>(context).backIcon(false),
         title: Text(
-          widget.title,
-          style: getSheet().titleStyle,
+          SheetProvider.of<AppText>(context).title,
+          style: SheetProvider.of<DefaultStyle>(context).titleStyle,
         ),
       ),
       body: Center(
@@ -70,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> with SheetUse<MyHomePage, Defau
           children: <Widget>[
             Text(
               'You have pushed the button this many times:',
-              style: getSheet().captionStyle,
+              style: SheetProvider.of<DefaultStyle>(context).captionStyle,
             ),
             SheetConsumer<DefaultStyle>(
                 builder: (context, sheet, child) => Row(
@@ -111,9 +140,14 @@ class _MyHomePageState extends State<MyHomePage> with SheetUse<MyHomePage, Defau
                       ],
                     )),
             AppButton(
-                text: 'Change Style',
+                text: SheetProvider.of<AppText>(context).button,
                 onPressed: () {
-                  applySheet(sheet[nextIndex]);
+                  SheetProvider.apply<DefaultStyle>(context, sheet[nextIndex]);
+                }),
+            AppButton(
+                text: SheetProvider.of<AppText>(context).buttonLang,
+                onPressed: () {
+                  applySheet(sheetLang[nextIndexLang]);
                 }),
           ],
         ),

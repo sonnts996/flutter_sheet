@@ -22,7 +22,9 @@ mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
   }
 
   void applySheet<T>(String sheet) {
-    SheetProvider.apply<T>(context, sheet);
+    setState(() {
+      SheetProvider.apply<T>(context, sheet);
+    });
   }
 
   SheetManagerMixin<T> getSheetManager<T>({bool listen = false}) {
@@ -45,7 +47,9 @@ mixin SheetUse<S extends StatefulWidget, T> on State<S> {
   }
 
   void applySheet(String sheet) {
-    SheetProvider.apply<T>(context, sheet);
+    setState(() {
+      SheetProvider.apply<T>(context, sheet);
+    });
   }
 
   SheetManagerMixin<T> getSheetManager({bool listen = false}) {

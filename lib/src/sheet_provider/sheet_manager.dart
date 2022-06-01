@@ -69,4 +69,13 @@ class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
       return sheets.values.first;
     }
   }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SheetManager<T> && other._currentSheet == _currentSheet;
+  }
+
+  @override
+  // TODO: implement hashCode
+  int get hashCode => _currentSheet.hashCode;
 }
