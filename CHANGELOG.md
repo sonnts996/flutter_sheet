@@ -25,3 +25,7 @@
 ## 0.0.1+6
 
 * refactor method
+
+## 0.0.2
+
+* multi sheet constructor change
