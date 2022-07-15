@@ -33,3 +33,7 @@
 ## 1.0.0
 
 * add Sheet class as an alternative solution to Provider
+
+## 1.0.0+1
+
+* fix Sheet.setup
