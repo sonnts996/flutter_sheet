@@ -9,6 +9,7 @@ import 'package:flutter_sheet/flutter_sheet.dart';
 class DefaultStyle extends XStyle {
   const DefaultStyle({
     MaterialColor primaryColor = Colors.indigo,
+    ThemeMode themeMode = ThemeMode.light,
     this.titleStyle = const TextStyle(
       color: Colors.white,
       fontSize: 16,
@@ -28,7 +29,7 @@ class DefaultStyle extends XStyle {
     this.checkIconColor = Colors.white,
     this.checkIcon = Icons.check,
     this.checkIconSpace = 4,
-  }) : super(swatch: primaryColor);
+  }) : super(swatch: primaryColor, themeMode: themeMode);
 
   final TextStyle titleStyle;
   final TextStyle textButtonStyle;
@@ -50,4 +51,12 @@ class DefaultStyle extends XStyle {
           Icons.home,
           color: Colors.white,
         );
+
+  BoxDecoration get panel => BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(color: Colors.grey));
+}
+
+class DarkStyle extends DefaultStyle {
+  const DarkStyle() : super(themeMode: ThemeMode.dark);
 }

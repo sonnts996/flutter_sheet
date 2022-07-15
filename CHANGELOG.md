@@ -29,3 +29,7 @@
 ## 0.0.2
 
 * multi sheet constructor change
+
+## 1.0.0
+
+* add Sheet class as an alternative solution to Provider

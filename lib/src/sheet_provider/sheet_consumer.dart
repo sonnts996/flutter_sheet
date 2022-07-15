@@ -24,7 +24,7 @@ class SheetConsumer<T> extends SingleChildStatelessWidget {
     return Consumer<SheetManager<T>>(
       builder: (context, value, child) => builder.call(
         context,
-        value.get(sheet),
+        value.read(sheet),
         child,
       ),
       child: child,
@@ -55,8 +55,8 @@ class SheetConsumer2<T1, T2> extends SingleChildStatelessWidget {
     return Consumer2<SheetManager<T1>, SheetManager<T2>>(
       builder: (context, value, value2, child) => builder.call(
         context,
-        value.get(sheet1),
-        value2.get(sheet2),
+        value.read(sheet1),
+        value2.read(sheet2),
         child,
       ),
       child: child,
@@ -90,9 +90,9 @@ class SheetConsumer3<T1, T2, T3> extends SingleChildStatelessWidget {
     return Consumer3<SheetManager<T1>, SheetManager<T2>, SheetManager<T3>>(
       builder: (context, value, value2, value3, child) => builder.call(
         context,
-        value.get(sheet1),
-        value2.get(sheet2),
-        value3.get(sheet3),
+        value.read(sheet1),
+        value2.read(sheet2),
+        value3.read(sheet3),
         child,
       ),
       child: child,

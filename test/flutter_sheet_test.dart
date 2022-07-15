@@ -18,14 +18,14 @@ void main() {
     expect(sheetManager.current, 'default');
     sheetManager.apply('test1');
     expect(sheetManager.current, 'test1');
-    expect(sheetManager.get(), const TestSheet('test1'));
-    expect(sheetManager.get('test2'), const TestSheet('test2'));
-    expect(sheetManager.get(), const TestSheet('test1'));
+    expect(sheetManager.read(), const TestSheet('test1'));
+    expect(sheetManager.read('test2'), const TestSheet('test2'));
+    expect(sheetManager.read(), const TestSheet('test1'));
   });
 
   test(
     'multi creator',
-        () {
+    () {
       Map<String, List<SheetCreator>> data = {
         "default": [
           SheetCreator<A>(() => A()),
@@ -49,9 +49,7 @@ void main() {
         ],
       };
 
-      Map<Type, Map<String, SheetCreator>> result = {
-
-      };
+      Map<Type, Map<String, SheetCreator>> result = {};
 
       data.keys.forEach((element) {
         List<SheetCreator> creators = data[element]!;
@@ -60,7 +58,6 @@ void main() {
           map[element] = elem;
           result[elem.type] = map;
         });
-
       });
       print(result);
     },

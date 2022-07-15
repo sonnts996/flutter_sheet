@@ -50,7 +50,7 @@ class SheetProvider<T> extends SingleChildStatelessWidget
   }
 
   static T of<T>(BuildContext context, {bool listen = false, String? sheet}) {
-    return manager<T>(context, listen: listen).get(sheet);
+    return manager<T>(context, listen: listen).read(sheet);
   }
 
   static void apply<T>(BuildContext context, String sheet) {

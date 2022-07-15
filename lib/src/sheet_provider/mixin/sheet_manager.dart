@@ -10,7 +10,15 @@ typedef CreateSheet<T> = T Function();
 mixin SheetManagerMixin<T> {
   void apply(String sheet);
 
-  T get(String? sheet);
+  T read(String? sheet);
+
+  void add(String sheet, T instance);
+
+  void remove(String sheet);
+
+  void addLazy(String sheet, CreateSheet<T> createSheet);
+
+  void clear();
 }
 
 class SheetCreator<T> {

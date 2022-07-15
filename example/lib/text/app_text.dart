@@ -4,7 +4,7 @@
 */
 class AppText {
   const AppText(
-      {this.button = 'Change Style',
+      {this.button = 'UI Style',
       this.buttonLang = 'Change Language',
       this.title = 'Sheet Demo App'});
 
@@ -25,4 +25,3 @@ class AppTextVi extends AppText {
   @override
   String get title => 'Sheet Demo App Vi';
 }
-
