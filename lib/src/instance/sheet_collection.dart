@@ -23,7 +23,7 @@ class Sheet {
   }
 
   static setup({required bool hotReload}) {
-    _instance = Sheet(hotReload: hotReload);
+    _instance ??= Sheet(hotReload: hotReload);
   }
 
   static Sheet? _instance;
