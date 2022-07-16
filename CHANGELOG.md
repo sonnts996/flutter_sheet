@@ -37,3 +37,11 @@
 ## 1.0.0+1
 
 * fix Sheet.setup
+
+## 1.0.0+2
+
+* add Sheet.isRegistered
+
+## 1.0.0+3
+
+* add SheetCollectionsUse

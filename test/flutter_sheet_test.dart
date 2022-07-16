@@ -51,14 +51,14 @@ void main() {
 
       Map<Type, Map<String, SheetCreator>> result = {};
 
-      data.keys.forEach((element) {
+      for (var element in data.keys) {
         List<SheetCreator> creators = data[element]!;
-        creators.forEach((elem) {
+        for (var elem in creators) {
           final map = result[elem.type] ?? {};
           map[element] = elem;
           result[elem.type] = map;
-        });
-      });
+        }
+      }
       print(result);
     },
   );

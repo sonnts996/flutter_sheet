@@ -19,6 +19,8 @@ mixin SheetManagerMixin<T> {
   void addLazy(String sheet, CreateSheet<T> createSheet);
 
   void clear();
+
+  bool contains(String sheet);
 }
 
 class SheetCreator<T> {

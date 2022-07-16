@@ -64,31 +64,39 @@ class Sheet {
     }
   }
 
-  static unregister<T>([String name = '']) {
+  static void unregister<T>([String name = '']) {
     final manager = shared.manager<T>();
     if (manager != null) {
       manager.remove(name);
     }
   }
 
-  static clear<T>() {
+  static void clear<T>() {
     final manager = shared.manager<T>();
     if (manager != null) {
       manager.clear();
     }
   }
 
-  static collectionClear() {
+  static void collectionClear() {
     shared._collection.clear();
   }
 
-  static apply<T>(String name) {
+  static void apply<T>(String name) {
     final manager = shared.managerNonNull<T>();
     manager.apply(name);
   }
 
-  static read<T>([String? name]) {
+  static T read<T>([String? name]) {
     final manager = shared.managerNonNull<T>();
-    manager.read(name);
+    return manager.read(name);
+  }
+
+  static bool isRegistered<T>([String? name]) {
+    if (name == null) {
+      return shared.manager<T>() != null;
+    } else {
+      return shared.manager()?.contains(name) == true;
+    }
   }
 }

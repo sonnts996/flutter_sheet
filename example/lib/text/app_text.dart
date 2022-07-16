@@ -13,6 +13,15 @@ class AppText {
   final String buttonLang;
 
   final String title;
+
+  // SheetManager using static instance
+  final String sectionTitle = 'SheetManager using static instance';
+
+  final String themeMode = 'Theme mode';
+
+  final String components = 'Components';
+
+
 }
 
 class AppTextVi extends AppText {

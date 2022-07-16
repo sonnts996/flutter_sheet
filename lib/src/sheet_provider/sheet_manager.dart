@@ -81,7 +81,7 @@ class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
 
   @override
   void add(String sheet, T instance) {
-    if (!sheets.containsKey(sheet)) {
+    if (!contains(sheet)) {
       sheets[sheet] = instance;
     } else {
       throw SheetExistingException(sheet);
@@ -90,7 +90,7 @@ class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
 
   @override
   void addLazy(String sheet, CreateSheet<T> createSheet) {
-    if (!sheets.containsKey(sheet) && !_createSheets.containsKey(sheet)) {
+    if (!contains(sheet)) {
       _createSheets[sheet] = createSheet;
     } else {
       throw SheetExistingException(sheet);
@@ -108,4 +108,8 @@ class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
     sheets.clear();
     _createSheets.clear();
   }
+
+  @override
+  bool contains(String sheet) =>
+      sheets.containsKey(sheet) || _createSheets.containsKey(sheet);
 }

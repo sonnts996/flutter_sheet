@@ -1,15 +1,15 @@
+import 'package:example/code_example/instance/init.dart';
+import 'package:example/stylesheet/app_style.dart';
 import 'package:example/stylesheet/theme.stylesheet.dart';
 import 'package:example/text/app_text.dart';
+import 'package:example/widget/source_preview.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sheet/flutter_sheet.dart';
 
 void main() {
-  Sheet.setup(hotReload: kDebugMode);
-  Sheet.registerLazyCollection<DefaultStyle>({
-    'default': () => const DefaultStyle(),
-    'dart': () => const DarkStyle(),
-  });
+  init();
   runApp(const MyApp());
 }
 
@@ -86,17 +86,41 @@ class InstanceManager extends StatelessWidget {
   const InstanceManager({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => SheetBuilder<DefaultStyle>(
-        builder: (context, sheet) => Material(
-          color: sheet.theme.backgroundColor,
-          child: Column(children: [
-            const Text('SheetManager using static instance'),
-            Switch(
-                value: sheet.themeMode == ThemeMode.dark,
-                onChanged: (value) {
-                  Sheet.apply<DefaultStyle>(value ? 'dart' : 'default');
-                })
-          ]),
+  Widget build(BuildContext context) => Sheet2Builder<AppStyle, AppText>(
+        builder: (context, style, text) => Material(
+          color: style.backgroundColor,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    text.sectionTitle,
+                    style: style.titleText,
+                  ),
+                  Row(children: [
+                    Text(
+                      text.themeMode,
+                      style: style.bodyText,
+                    ),
+                    const Spacer(),
+                    CupertinoSwitch(
+                        value: style.themeMode == ThemeMode.dark,
+                        onChanged: (value) {
+                          Sheet.apply<AppStyle>(value ? 'dart' : 'default');
+                        }),
+                  ]),
+                  const Divider(),
+                  Text(text.components, style: style.subTitleText),
+                  const ExpansionTile(
+                    title: Text('Sheet'),
+                    children: [
+                      SourcePreview(path: 'lib/code_example/instance/init.dart')
+                    ],
+                  )
+                ]),
+          ),
         ),
       );
 }
