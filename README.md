@@ -8,7 +8,7 @@ flutter_sheet: 'any'
 
 ## Usage
 
-Import packages:
+- Import packages:
 
 ```dart
 import 'package:flutter_sheet/flutter_sheet.dart';
@@ -39,7 +39,7 @@ void init(){
 ```
 ### Using
 
-Read AppStyle with current sheet
+- Read AppStyle with current sheet
 
 ```dart
 
@@ -52,7 +52,7 @@ or with special sheet
 Sheet.read<AppStyle>('dart').backgroundColor;
 ```
 
-Change current sheet
+- Change current sheet
 
 ```dart
 
@@ -63,7 +63,7 @@ Sheet.apply<AppStyle>('dart');
 
 If you want to change sheet value as soon as call **Sheet.apply**:
 
-In StatefulWidget, use:
+- In StatefulWidget, use:
 
 ```dart
 
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage>
 }
 ```
 
-other Widget, use:
+- other Widget, use:
 
 ```dart
 
