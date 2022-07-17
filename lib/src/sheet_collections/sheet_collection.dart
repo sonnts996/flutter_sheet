@@ -3,6 +3,7 @@
  Copyright (c) 2022 . All rights reserved.
 */
 import '../../flutter_sheet.dart';
+import '../manager/sheet_manager_mixin.dart';
 
 class Sheet {
   Sheet({this.hotReload = false});
@@ -44,7 +45,7 @@ class Sheet {
     }
   }
 
-  static void registerLazy<T>(CreateSheet<T> value, {String name = ''}) {
+  static void registerLazy<T>(Creator<T> value, {String name = ''}) {
     var manager = shared.manager<T>();
     if (manager == null) {
       manager = SheetManager<T>({name: value}, hotReload: shared.hotReload);
@@ -54,7 +55,7 @@ class Sheet {
     }
   }
 
-  static void registerLazyCollection<T>(Map<String, CreateSheet<T>> create) {
+  static void registerLazyCollection<T>(Map<String, Creator<T>> create) {
     var manager = shared.manager<T>();
     if (manager == null) {
       manager = SheetManager<T>(create, hotReload: shared.hotReload);

@@ -3,7 +3,7 @@
  Copyright (c) 2022 . All rights reserved.
 */
 import 'package:flutter/widgets.dart';
-import 'sheet_manager.dart';
+import '../manager/sheet_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

@@ -3,34 +3,21 @@
  Copyright (c) 2022 . All rights reserved.
 */
 class AppText {
-  const AppText(
-      {this.button = 'UI Style',
-      this.buttonLang = 'Change Language',
-      this.title = 'Sheet Demo App'});
+  const AppText();
 
-  final String button;
+  final String title = 'Flutter Sheet Demo';
 
-  final String buttonLang;
-
-  final String title;
-
-  // SheetManager using static instance
-  final String sectionTitle = 'SheetManager using static instance';
+  final String sectionTitle = 'SheetManager using collections';
 
   final String themeMode = 'Theme mode';
 
   final String components = 'Components';
 
+  final String componentsInitialization = 'Initialization';
 
+  final String componentsUsing = 'Using';
+
+  final String componentsExtension = 'Extension';
 }
 
-class AppTextVi extends AppText {
-  @override
-  String get button => 'Thay đổi chủ đề';
-
-  @override
-  String get buttonLang => 'Thay đôi ngôn ngữ';
-
-  @override
-  String get title => 'Sheet Demo App Vi';
-}
+class AppTextVi extends AppText {}

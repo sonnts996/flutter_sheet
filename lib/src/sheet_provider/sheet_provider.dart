@@ -4,18 +4,18 @@
 */
 
 import 'package:flutter/widgets.dart';
-import 'mixin/sheet_manager.dart';
-import 'sheet_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import '../manager/sheet_manager.dart';
+import '../manager/sheet_manager_mixin.dart';
 import 'mixin/provider_single_child_widget.dart';
 
 class SheetProvider<T> extends SingleChildStatelessWidget
     with SheetProviderSingleChildWidget {
   const SheetProvider(
       {Key? key,
-      required Map<String, CreateSheet<T>>? createSheets,
+      required Map<String, Creator<T>>? createSheets,
       Widget? child,
       this.hotReload = false})
       : _createSheets = createSheets,
@@ -28,7 +28,7 @@ class SheetProvider<T> extends SingleChildStatelessWidget
         hotReload = false,
         super(key: key, child: child);
 
-  final Map<String, CreateSheet<T>>? _createSheets;
+  final Map<String, Creator<T>>? _createSheets;
   final T? value;
   final bool hotReload;
 

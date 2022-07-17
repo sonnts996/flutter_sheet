@@ -3,13 +3,12 @@
  Copyright (c) 2022 . All rights reserved.
 */
 import 'package:flutter/foundation.dart';
-
-import '../exception/sheet_existing.dart';
-import '../exception/sheet_not_found.dart';
-import 'mixin/sheet_manager.dart';
+import 'package:meta/meta.dart';
+import 'exception.dart';
+import 'sheet_manager_mixin.dart';
 
 class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
-  SheetManager(Map<String, CreateSheet<T>> createSheets,
+  SheetManager(Map<String, Creator<T>> createSheets,
       {this.hotReload = false})
       : assert(createSheets.isNotEmpty, 'Sheet cannot empty!'),
         _createSheets = createSheets,
@@ -23,7 +22,7 @@ class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
         _createSheets = {},
         sheets = {name ?? '': value};
 
-  final Map<String, CreateSheet<T>> _createSheets;
+  final Map<String, Creator<T>> _createSheets;
   final Map<String, T> sheets;
   final bool hotReload;
 
@@ -79,36 +78,41 @@ class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
   // TODO: implement hashCode
   int get hashCode => _currentSheet.hashCode;
 
+  @internal
   @override
   void add(String sheet, T instance) {
     if (!contains(sheet)) {
       sheets[sheet] = instance;
     } else {
-      throw SheetExistingException(sheet);
+      throw SheetExistsException(sheet);
     }
   }
 
+  @internal
   @override
-  void addLazy(String sheet, CreateSheet<T> createSheet) {
+  void addLazy(String sheet, Creator<T> createSheet) {
     if (!contains(sheet)) {
       _createSheets[sheet] = createSheet;
     } else {
-      throw SheetExistingException(sheet);
+      throw SheetExistsException(sheet);
     }
   }
 
+  @internal
   @override
   void remove(String sheet) {
     sheets.removeWhere((key, value) => key == sheet);
     _createSheets.removeWhere((key, value) => key == sheet);
   }
 
+  @internal
   @override
   void clear() {
     sheets.clear();
     _createSheets.clear();
   }
 
+  @internal
   @override
   bool contains(String sheet) =>
       sheets.containsKey(sheet) || _createSheets.containsKey(sheet);

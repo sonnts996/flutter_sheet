@@ -11,11 +11,21 @@ class SheetRegisterException with Exception {
   String toString() => message;
 }
 
-class SheetExistingException extends SheetRegisterException {
-  SheetExistingException(String name) : super('$name already exist in manager');
+class SheetExistsException extends SheetRegisterException {
+  SheetExistsException(String name) : super('$name already exist in manager');
 }
 
 class SheetNotRegisterException extends SheetRegisterException {
   const SheetNotRegisterException(String sheet)
       : super('$sheet was not exist in manager');
+}
+
+class SheetNotFoundException with Exception {
+  const SheetNotFoundException(String sheet)
+      : message = '$sheet: Sheet not found!';
+
+  final String message;
+
+  @override
+  String toString() => message;
 }

@@ -2,7 +2,6 @@
  Created by Thanh Son on 4/18/2022.
  Copyright (c) 2022 . All rights reserved.
 */
-import 'package:example/stylesheet/theme.stylesheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sheet/flutter_sheet.dart';
 
@@ -17,13 +16,12 @@ class AppButton extends StatelessWidget {
   final Function() onPressed;
 
   @override
-  Widget build(BuildContext context) => SheetConsumer<DefaultStyle>(
+  Widget build(BuildContext context) => SheetConsumer(
         builder: (context, sheet, child) => ElevatedButton(
-            onPressed: onPressed,
-            child: Text(
-              text,
-              style: sheet.textButtonStyle,
-            ),
-            style: sheet.buttonStyle),
+          onPressed: onPressed,
+          child: Text(
+            text,
+          ),
+        ),
       );
 }

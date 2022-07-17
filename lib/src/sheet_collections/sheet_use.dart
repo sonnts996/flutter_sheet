@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 
 import '../../flutter_sheet.dart';
 
-mixin SheetCollectionsUse<S extends StatefulWidget, T> on State<S> {
+mixin SheetCollectionInUse<S extends StatefulWidget, T> on State<S> {
   String? get sheetName => null;
 
   T get sheet => readSheet(sheetName);
@@ -30,7 +30,7 @@ mixin SheetCollectionsUse<S extends StatefulWidget, T> on State<S> {
   }
 }
 
-mixin Sheet2CollectionsUse<S extends StatefulWidget, T1, T2> on State<S> {
+mixin Sheet2CollectionsInUse<S extends StatefulWidget, T1, T2> on State<S> {
   String? get sheetName => null;
 
   String? get sheetName2 => sheetName;
@@ -60,7 +60,7 @@ mixin Sheet2CollectionsUse<S extends StatefulWidget, T1, T2> on State<S> {
   }
 }
 
-mixin Sheet3CollectionsUse<S extends StatefulWidget, T1, T2, T3> on State<S> {
+mixin Sheet3CollectionsInUse<S extends StatefulWidget, T1, T2, T3> on State<S> {
   String? get sheetName => null;
 
   String? get sheetName2 => sheetName;
@@ -96,7 +96,7 @@ mixin Sheet3CollectionsUse<S extends StatefulWidget, T1, T2, T3> on State<S> {
   }
 }
 
-mixin Sheet4CollectionsUse<S extends StatefulWidget, T1, T2, T3, T4>
+mixin Sheet4CollectionsInUse<S extends StatefulWidget, T1, T2, T3, T4>
     on State<S> {
   String? get sheetName => null;
 
@@ -139,7 +139,7 @@ mixin Sheet4CollectionsUse<S extends StatefulWidget, T1, T2, T3, T4>
   }
 }
 
-mixin SheetThemeTextUse<S extends StatefulWidget, T1, T2> on State<S> {
+mixin SheetThemeTextInUse<S extends StatefulWidget, T1, T2> on State<S> {
   String? get styleName => null;
 
   String? get textName => styleName;

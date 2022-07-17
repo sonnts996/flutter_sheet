@@ -26,33 +26,33 @@ void main() {
   test(
     'multi creator',
     () {
-      Map<String, List<SheetCreator>> data = {
+      Map<String, List<CreatorModel>> data = {
         "default": [
-          SheetCreator<A>(() => A()),
-          SheetCreator<B>(() => B()),
-          SheetCreator<A1>(() => A1()),
-          SheetCreator<A2>(() => A2()),
+          CreatorModel<A>(() => A()),
+          CreatorModel<B>(() => B()),
+          CreatorModel<A1>(() => A1()),
+          CreatorModel<A2>(() => A2()),
         ],
         "test1": [
-          SheetCreator<A>(() => A1()),
-          SheetCreator<B>(() => B()),
-          SheetCreator<C>(() => C()),
-          SheetCreator<A2>(() => A2()),
+          CreatorModel<A>(() => A1()),
+          CreatorModel<B>(() => B()),
+          CreatorModel<C>(() => C()),
+          CreatorModel<A2>(() => A2()),
         ],
         "test2": [
-          SheetCreator<B>(() => B()),
-          SheetCreator<C>(() => C()),
+          CreatorModel<B>(() => B()),
+          CreatorModel<C>(() => C()),
         ],
         "test3": [
-          SheetCreator<B>(() => B()),
-          SheetCreator<C>(() => C()),
+          CreatorModel<B>(() => B()),
+          CreatorModel<C>(() => C()),
         ],
       };
 
-      Map<Type, Map<String, SheetCreator>> result = {};
+      Map<Type, Map<String, CreatorModel>> result = {};
 
       for (var element in data.keys) {
-        List<SheetCreator> creators = data[element]!;
+        List<CreatorModel> creators = data[element]!;
         for (var elem in creators) {
           final map = result[elem.type] ?? {};
           map[element] = elem;

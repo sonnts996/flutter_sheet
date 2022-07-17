@@ -3,14 +3,14 @@
  Copyright (c) 2022 . All rights reserved.
 */
 import 'package:flutter/widgets.dart';
-import 'sheet_manager.dart';
 import 'package:provider/single_child_widget.dart';
 
+import '../../manager/sheet_manager_mixin.dart';
 import '../sheet_provider.dart';
 
 mixin SheetProviderSingleChildWidget on SingleChildWidget {}
 
-mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
+mixin MultiSheetProviderInUse<S extends StatefulWidget> on State<S> {
   T currentSheet<T>() => getSheet<T>();
 
   T getSheet<T>({String? sheet, bool listen = false}) {
@@ -35,7 +35,7 @@ mixin MultiSheetUse<S extends StatefulWidget> on State<S> {
   }
 }
 
-mixin SheetUse<S extends StatefulWidget, T> on State<S> {
+mixin SheetProviderInUse<S extends StatefulWidget, T> on State<S> {
   T currentSheet() => getSheet();
 
   T getSheet({String? sheet, bool listen = false}) {

@@ -11,7 +11,7 @@ class MultiSheetProvider extends MultiProvider {
   MultiSheetProvider(
       {Key? key,
       List<SheetProvider> providers = const [],
-      Map<String, List<SheetCreator>> createSheets = const {},
+      Map<String, List<CreatorModel>> createSheets = const {},
       bool hotReload = false,
       required Widget child})
       : assert(providers.isNotEmpty || createSheets.isNotEmpty,
@@ -24,13 +24,13 @@ class MultiSheetProvider extends MultiProvider {
 }
 
 List<SheetProvider> _provider(
-    Map<String, List<SheetCreator>> map, bool hotReload) {
-  Map<Type, Map<String, SheetCreator>> result = {};
-  Map<Type, SheetCreator> creators = {};
+    Map<String, List<CreatorModel>> map, bool hotReload) {
+  Map<Type, Map<String, CreatorModel>> result = {};
+  Map<Type, CreatorModel> creators = {};
   List<SheetProvider> providers = [];
 
   void extractKey(String data) {
-    List<SheetCreator> _creators = map[data]!;
+    List<CreatorModel> _creators = map[data]!;
     for (int i = 0; i < _creators.length; i++) {
       final creator = _creators[i];
       final map = result[creator.type] ?? {};
