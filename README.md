@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage>
 }
 ```
 
-- other Widget, use:
+- Other Widget, use:
 
 ```dart
 
