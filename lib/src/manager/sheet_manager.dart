@@ -8,8 +8,7 @@ import 'exception.dart';
 import 'sheet_manager_mixin.dart';
 
 class SheetManager<T> extends ChangeNotifier with SheetManagerMixin<T> {
-  SheetManager(Map<String, Creator<T>> createSheets,
-      {this.hotReload = false})
+  SheetManager(Map<String, Creator<T>> createSheets, {this.hotReload = false})
       : assert(createSheets.isNotEmpty, 'Sheet cannot empty!'),
         _createSheets = createSheets,
         sheets = {};

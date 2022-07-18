@@ -6,12 +6,13 @@ repository: https://github.com/sonnts996/flutter_sheet
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
-  flutter: ">=1.17.0"
+  flutter: ">=2.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.0
+  meta: ^1.7.0
 
 
 dev_dependencies:

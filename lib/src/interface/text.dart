@@ -5,7 +5,6 @@
 
 import 'package:flutter/rendering.dart';
 
-
 ///
 /// a model for appText text
 /// you can extends it for your custom not

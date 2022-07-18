@@ -119,7 +119,6 @@ class StateXStyle<T> {
   }
 }
 
-
 ///
 /// for widget with 3 state style
 class State3XStyle<T> {

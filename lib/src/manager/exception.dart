@@ -13,7 +13,6 @@ class SheetRegisterException with Exception {
   String toString() => message;
 }
 
-
 ///
 /// Exception when add a exists sheet name
 class SheetExistsException extends SheetRegisterException {

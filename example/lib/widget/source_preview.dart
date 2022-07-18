@@ -45,8 +45,6 @@ class SourcePreview extends StatelessWidget {
   }
 }
 
-
-
 class CodeElementBuilder extends MarkdownElementBuilder {
   @override
   Widget? visitElementAfter(md.Element element, TextStyle? preferredStyle) {
@@ -58,7 +56,7 @@ class CodeElementBuilder extends MarkdownElementBuilder {
     }
     return SizedBox(
       width:
-      MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size.width,
+          MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size.width,
       child: HighlightView(
         // The original code to be highlighted
         element.textContent,
@@ -70,8 +68,8 @@ class CodeElementBuilder extends MarkdownElementBuilder {
         // Specify highlight theme
         // All available themes are listed in `themes` folder
         theme: MediaQueryData.fromWindow(WidgetsBinding.instance!.window)
-            .platformBrightness ==
-            Brightness.light
+                    .platformBrightness ==
+                Brightness.light
             ? atomOneLightTheme
             : atomOneDarkTheme,
 

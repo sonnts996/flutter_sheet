@@ -12,7 +12,6 @@ import 'package:meta/meta.dart';
 typedef Creator<T> = T Function();
 
 mixin SheetManagerMixin<T> {
-
   ///
   /// Change [currentSheet] by [sheet], if the new sheet exists.
   void apply(String sheet);
