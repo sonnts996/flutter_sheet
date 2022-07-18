@@ -8,25 +8,35 @@ import 'package:provider/single_child_widget.dart';
 import '../../manager/sheet_manager_mixin.dart';
 import '../sheet_provider.dart';
 
+///
+/// Mixin for sheet provider widget
 mixin SheetProviderSingleChildWidget on SingleChildWidget {}
 
+///
+/// extension for [StatefulWidget] with [MultiSheetProvider]
 mixin MultiSheetProviderInUse<S extends StatefulWidget> on State<S> {
-  T currentSheet<T>() => getSheet<T>();
+  /// return current [T] sheet
+  T sheet<T>() => read<T>();
 
-  T getSheet<T>({String? sheet, bool listen = false}) {
+  /// read [T] sheet with sheet [name]
+  T read<T>({String? name, bool listen = false}) {
     return SheetProvider.of<T>(
       context,
       listen: listen,
-      sheet: sheet,
+      name: name,
     );
   }
 
-  void applySheet<T>(String sheet) {
+  /// change current [T] sheet with [name],
+  /// auto rebuild when call apply
+  void applySheet<T>(String name) {
     setState(() {
-      SheetProvider.apply<T>(context, sheet);
+      SheetProvider.apply<T>(context, name);
     });
   }
 
+  ///
+  /// return [T] sheet manager
   SheetManagerMixin<T> getSheetManager<T>({bool listen = false}) {
     return SheetProvider.manager<T>(
       context,
@@ -35,23 +45,34 @@ mixin MultiSheetProviderInUse<S extends StatefulWidget> on State<S> {
   }
 }
 
+///
+/// Mixin for sheet provider widget with [T] sheet type predefined
 mixin SheetProviderInUse<S extends StatefulWidget, T> on State<S> {
-  T currentSheet() => getSheet();
+  /// current [T] [sheetName] use for this widget
+  String? get sheetName => null;
 
-  T getSheet({String? sheet, bool listen = false}) {
+  /// return current [T] sheet
+  T sheet() => read(name: sheetName);
+
+  /// read [T] sheet with sheet [name]
+  T read({String? name, bool listen = false}) {
     return SheetProvider.of<T>(
       context,
       listen: listen,
-      sheet: sheet,
+      name: name,
     );
   }
 
-  void applySheet(String sheet) {
+  /// change current [T] sheet with [name],
+  /// auto rebuild when call apply
+  void applySheet(String name) {
     setState(() {
-      SheetProvider.apply<T>(context, sheet);
+      SheetProvider.apply<T>(context, name);
     });
   }
 
+  ///
+  /// return [T] sheet manager
   SheetManagerMixin<T> getSheetManager({bool listen = false}) {
     return SheetProvider.manager<T>(
       context,

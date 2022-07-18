@@ -6,11 +6,15 @@
 import '../../../flutter_sheet.dart';
 import '../../manager/sheet_manager_mixin.dart';
 
+///
+/// Create a model contains sheet create function
 class CreatorModel<T> {
   const CreatorModel(this.createSheet);
 
+  /// sheet create function
   final Creator<T> createSheet;
 
+  /// return [SheetProvider] with [createSheet]
   SheetProvider<T> createProvider(
     bool hotReload,
     Map<String, Creator<T>> createSheets,
@@ -20,6 +24,7 @@ class CreatorModel<T> {
         hotReload: hotReload,
       );
 
+  /// auto add [createSheet] to [map]
   Map<String, Creator<T>> cast(Map<String, CreatorModel> map) =>
       map.map((key, value) => MapEntry<String, Creator<T>>(
           key, (value as CreatorModel<T>).createSheet));
@@ -27,5 +32,6 @@ class CreatorModel<T> {
   @override
   String toString() => T.toString();
 
+  /// return [T] type of [sheetCreator]
   Type get type => T;
 }

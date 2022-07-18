@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 
 ///
-/// a model style
+/// a model for app style
 /// you can extends it for your custom not
 ///
 class XStyle {

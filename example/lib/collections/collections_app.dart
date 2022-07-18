@@ -17,7 +17,6 @@ class CollectionsApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Sheet.read<AppStyle>().backgroundColor;
     return SheetBuilder<AppStyle>(
       builder: (context, sheet) => MaterialApp(
         title: 'Sheet Demo',
@@ -60,6 +59,15 @@ class _MyHomePageState extends State<MyHomePage>
                   value: style.brightness == Brightness.dark,
                   onChanged: (value) {
                     Sheet.apply<AppStyle>(value ? 'dart' : 'default');
+                  }),
+            ]),
+            Row(children: [
+              Text(text.languageMode, style: style.bodyText),
+              const Spacer(),
+              CupertinoSwitch(
+                  value: style.brightness == Brightness.dark,
+                  onChanged: (value) {
+                    Sheet.apply<AppText>(value ? 'vi' : 'default');
                   }),
             ]),
             const Divider(),

@@ -2,6 +2,21 @@
  Created by Thanh Son on 16/07/2022.
  Copyright (c) 2022 . All rights reserved.
 */
+
+import 'package:flutter/rendering.dart';
+
+
+///
+/// a model for appText text
+/// you can extends it for your custom not
+///
+class XText {
+  const XText(this.locale);
+
+  /// locale for model
+  final Locale locale;
+}
+
 ///
 /// TextModel for widget contains title and content
 class XTitle {

@@ -7,6 +7,12 @@ import 'package:provider/provider.dart';
 
 import '../../flutter_sheet.dart';
 
+
+///
+/// Multi Provider of SheetProvider
+/// can use 2 methods to declare sheet [Creator]
+/// [createSheets] is a map with [sheetName] and [CreatorModel], it can be convert to List<SheetProvider>
+/// [providers] is a list of Provider elements
 class MultiSheetProvider extends MultiProvider {
   MultiSheetProvider(
       {Key? key,

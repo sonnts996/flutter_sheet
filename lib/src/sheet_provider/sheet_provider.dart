@@ -11,6 +11,11 @@ import '../manager/sheet_manager.dart';
 import '../manager/sheet_manager_mixin.dart';
 import 'mixin/provider_single_child_widget.dart';
 
+///
+/// A Provider Widget to use sheet
+/// [hotReload] is use for re-create sheet in each re-build
+/// [createSheets] is a map for lazy create sheet, create only use it
+/// [value] if you want to use a singleTon sheet instance
 class SheetProvider<T> extends SingleChildStatelessWidget
     with SheetProviderSingleChildWidget {
   const SheetProvider(
@@ -29,9 +34,14 @@ class SheetProvider<T> extends SingleChildStatelessWidget
         super(key: key, child: child);
 
   final Map<String, Creator<T>>? _createSheets;
+
+  /// a SingleTon value of sheet, each [SheetProvider] as only one value
   final T? value;
+
+  /// if true, on each re-build, sheet creator will be call, else sheet instance is singleTon
   final bool hotReload;
 
+  /// return [T] sheet manager
   static SheetManagerMixin<T> manager<T>(BuildContext context,
       {bool listen = false}) {
     try {
@@ -49,12 +59,14 @@ class SheetProvider<T> extends SingleChildStatelessWidget
     }
   }
 
-  static T of<T>(BuildContext context, {bool listen = false, String? sheet}) {
-    return manager<T>(context, listen: listen).read(sheet);
+  /// return current sheet or sheet with [name]
+  static T of<T>(BuildContext context, {bool listen = false, String? name}) {
+    return manager<T>(context, listen: listen).read(name);
   }
 
-  static void apply<T>(BuildContext context, String sheet) {
-    manager<T>(context, listen: false).apply(sheet);
+  ///change current sheet with [name]
+  static void apply<T>(BuildContext context, String name) {
+    manager<T>(context, listen: false).apply(name);
   }
 
   @override

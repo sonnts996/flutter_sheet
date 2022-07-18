@@ -1,3 +1,4 @@
+import 'package:example/providers/providers_app.dart';
 import 'package:example/stylesheet/app_style.dart';
 import 'package:example/text/app_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,5 +18,6 @@ void main() {
     'default': () => const AppText(),
     'vi': () => const AppText(),
   });
-  runApp(const CollectionsApp());
+  runApp(const ProvidersApp());
+  // runApp(const CollectionsApp());
 }
