@@ -28,7 +28,7 @@ class ProvidersApp extends StatelessWidget {
           CreatorModel<AppText>(() => const AppText())
         ],
         'dart': [CreatorModel<AppStyle>(() => AppDartStyle())],
-        'vi': [CreatorModel<AppText>(() => AppTextVi())]
+        'vi': [CreatorModel<AppText>(() => const AppTextVi())]
       },
       child: SheetConsumer<AppStyle>(
         builder: (context, sheet, child) => MaterialApp(

@@ -16,7 +16,7 @@ void main() {
   });
   Sheet.registerLazyCollection<AppText>({
     'default': () => const AppText(),
-    'vi': () => const AppText(),
+    'vi': () => const AppTextVi(),
   });
   runApp(const ProvidersApp());
   // runApp(const CollectionsApp());

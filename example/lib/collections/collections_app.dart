@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage>
               Text(text.languageMode, style: style.bodyText),
               const Spacer(),
               CupertinoSwitch(
-                  value: style.brightness == Brightness.dark,
+                  value: text.locale == const Locale('vi_VI'),
                   onChanged: (value) {
                     Sheet.apply<AppText>(value ? 'vi' : 'default');
                   }),
