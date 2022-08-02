@@ -18,8 +18,8 @@ class AppStyle extends XStyle {
 
   final Color defTextColor = Colors.black;
 
-  TextXStyle<StateXStyle<Color>> get expansionTitle => TextXStyle(
-      textStyle: _textStyle(const TextStyle(
+  TextCustom2XStyle<StateXStyle<Color>> get expansionTitle => TextCustom2XStyle(
+      style: _textStyle(const TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w300,
       )),
@@ -67,7 +67,7 @@ class AppDartStyle extends AppStyle {
 
   @override
   // TODO: implement expansionTitle
-  TextXStyle<StateXStyle<Color>> get expansionTitle =>
+  TextCustom2XStyle<StateXStyle<Color>> get expansionTitle =>
       super.expansionTitle.copyWith(
               value: const StateXStyle(
             value1: Colors.grey,

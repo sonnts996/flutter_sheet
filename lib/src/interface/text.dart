@@ -3,7 +3,10 @@
  Copyright (c) 2022 . All rights reserved.
 */
 
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:flutter/rendering.dart';
+
+part 'text.g.dart';
 
 ///
 /// a model for appText text
@@ -18,6 +21,7 @@ class XText {
 
 ///
 /// TextModel for widget contains title and content
+@CopyWith()
 class XTitle {
   const XTitle({
     this.title = '',
@@ -39,6 +43,7 @@ class XTitle {
 
 ///
 /// TextModel for a common dialog
+@CopyWith()
 class XDialog {
   const XDialog(
       {this.title = '',

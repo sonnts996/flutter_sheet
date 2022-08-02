@@ -74,21 +74,21 @@ class _MyHomePageState extends State<MyHomePage>
             Text(text.components, style: style.subTitleText),
             ExpansionTile(
               title: Text(text.componentsInitialization,
-                  style: style.expansionTitle.textStyle),
+                  style: style.expansionTitle.style),
               textColor: style.expansionTitle.value.value2,
               collapsedTextColor: style.expansionTitle.value.value1,
               children: const [SourcePreview(path: 'collections/init.md')],
             ),
             ExpansionTile(
-              title: Text(text.componentsUsing,
-                  style: style.expansionTitle.textStyle),
+              title:
+                  Text(text.componentsUsing, style: style.expansionTitle.style),
               textColor: style.expansionTitle.value.value2,
               collapsedTextColor: style.expansionTitle.value.value1,
               children: const [SourcePreview(path: 'collections/using.md')],
             ),
             ExpansionTile(
               title: Text(text.componentsExtension,
-                  style: style.expansionTitle.textStyle),
+                  style: style.expansionTitle.style),
               textColor: style.expansionTitle.value.value2,
               collapsedTextColor: style.expansionTitle.value.value1,
               children: const [SourcePreview(path: 'collections/extension.md')],

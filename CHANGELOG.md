@@ -50,3 +50,7 @@
 ## 1.0.0+4
 
 * Documents package
+
+## 1.0.0+5
+
+* Extension widget

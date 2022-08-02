@@ -1,6 +1,6 @@
 name: flutter_sheet
 description: Easily change the definition (such as theme, configuration,...) for the application
-version: 1.0.0+4
+version: 1.0.0+5
 
 repository: https://github.com/sonnts996/flutter_sheet
 
@@ -13,12 +13,15 @@ dependencies:
     sdk: flutter
   provider: ^6.0.0
   meta: ^1.7.0
+  copy_with_extension: ^4.0.2
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
+  copy_with_extension_gen: ^4.0.2
+  build_runner: ^2.2.0
 
 flutter:
 
