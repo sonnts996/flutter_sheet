@@ -4,7 +4,7 @@
 */
 ///
 /// Exception use for Register Sheet
-class SheetRegisterException with Exception {
+class SheetRegisterException implements Exception {
   const SheetRegisterException(this.message);
 
   final String message;
@@ -28,7 +28,7 @@ class SheetNotRegisterException extends SheetRegisterException {
 
 ///
 /// When you read a sheet name does not register yet
-class SheetNotFoundException with Exception {
+class SheetNotFoundException implements Exception {
   const SheetNotFoundException(String sheet)
       : message = '$sheet: Sheet not found!';
 

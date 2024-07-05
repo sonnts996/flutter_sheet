@@ -54,3 +54,11 @@
 ## 1.0.0+5
 
 * Extension widget
+
+## 2.0.0
+
+Upgrade flutter 3
+
+## 3.0.0
+
+Upgrade dart 3
